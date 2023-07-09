@@ -1,0 +1,27 @@
+*.py[cod]
+*$py.class
+
+# Packages
+__pycache__/
+*.egg
+*.egg-info
+bin
+build
+dist
+eggs
+lib
+var
+
+# Tests
+.coverage
+.nox
+.tox
+.cache
+.pytest_cache
+htmlcov
+
+# JetBrains
+.idea
+
+# VS Code
+.vscode
