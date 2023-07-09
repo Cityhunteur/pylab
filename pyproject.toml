@@ -1,0 +1,61 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools", "wheel", "versioningit"]
+
+[project]
+name = "pylab"
+description = "Carry out controlled experiments using Python"
+license = { text = "MIT" }
+authors = [{ name = "Pravin", email = "5994387+Cityhunteur@users.noreply.github.com" }]
+requires-python = ">=3.10"
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 3 - Alpha"
+]
+dependencies = [
+    "versioningit",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-asyncio", "coverage", "pytest-cov"]
+
+[project.readme]
+content-type = "text/markdown"
+file = "README.md"
+
+[project.scripts]
+pylab = "pylab._main:main"
+
+[tool.setuptools.packages.find]
+include = ["pylab.*", "pylab"]
+
+[tool.mypy]
+python_version = "3.10"
+
+[tool.pytest.ini_options]
+addopts = """
+    -vvv
+    --cov=pylab
+    --cov-report term
+    --cov-report xml
+    --cov-fail-under=0
+    --asyncio-mode=auto
+"""
+
+[tool.coverage.report]
+exclude_lines = [
+    "if __name__ == .__main__.:",
+]
+
+[tool.poetry]
+readme = "README.md"
+
+[tool.versioningit.vcs]
+method = "git"
+default-tag = "1.0.0"
+
+[tool.versioningit.onbuild]
+build-file = "pylab/_version.py"
+source-file = "pylab/_version.py"
